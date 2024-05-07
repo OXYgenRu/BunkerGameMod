@@ -7,10 +7,13 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
+import net.minecraft.text.Style;
 import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.TypedActionResult;
@@ -44,7 +47,15 @@ public class ModItems {
         public TypedActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
             if (!world.isClient) {
                 if (hand == Hand.MAIN_HAND) {
-                    player.sendMessage(Text.literal(stat), false);
+                    ItemStack heldItem = player.getMainHandStack();
+                    NbtCompound tag = heldItem.getNbt();
+                    if (tag == null) {
+                        player.sendMessage(Text.literal("Характеристика карточки пуста"), true);
+                        return TypedActionResult.success(player.getStackInHand(hand));
+                    }
+                    Text card_stat = Text.literal(tag.getCompound("CustomTag").getString("CardStat"));
+                    player.sendMessage(card_stat, true);
+
                 }
             }
             return TypedActionResult.success(player.getStackInHand(hand));
@@ -56,16 +67,10 @@ public class ModItems {
             ItemGroups.INGREDIENTS);
     public static final InfoCard AGE_BIO_CARD = (InfoCard) registerItem("age_bio_card", new InfoCard(new Item.Settings()),
             ItemGroups.INGREDIENTS);
-    //    public static final InfoCard BIO_CARD = (InfoCard) registerItem("bio_card", new InfoCard(new Item.Settings()),
-//            ItemGroups.INGREDIENTS);
-//    public static final InfoCard HEIGHT_CARD = (InfoCard) registerItem("height_card", new InfoCard(new Item.Settings()),
-//            ItemGroups.INGREDIENTS);
     public static final InfoCard BODY_TYPE_CARD = (InfoCard) registerItem("body_type_card", new InfoCard(new Item.Settings()),
             ItemGroups.INGREDIENTS);
     public static final InfoCard PROFESSION_CARD = (InfoCard) registerItem("profession_card", new InfoCard(new Item.Settings()),
             ItemGroups.INGREDIENTS);
-    //    public static final InfoCard EXPERIENCE_CARD = (InfoCard) registerItem("experience_card", new InfoCard(new Item.Settings()),
-//            ItemGroups.INGREDIENTS);
     public static final InfoCard HEALTH_CARD = (InfoCard) registerItem("health_card", new InfoCard(new Item.Settings()),
             ItemGroups.INGREDIENTS);
     public static final InfoCard PHOBIA_CARD = (InfoCard) registerItem("phobia_card", new InfoCard(new Item.Settings()),

@@ -1,9 +1,6 @@
 package net.bunkergame;
 
-import net.bunkergame.commands.CreateGameSession;
-import net.bunkergame.commands.CustomCommand;
-import net.bunkergame.commands.EnjoyGameSession;
-import net.bunkergame.commands.MySession;
+import net.bunkergame.commands.*;
 import net.bunkergame.items.ModItems;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
@@ -31,6 +28,8 @@ public class BunkerGame implements ModInitializer {
                 EnjoyGameSession::register);
         CommandRegistrationCallback.EVENT.register(
                 MySession::register);
+        CommandRegistrationCallback.EVENT.register(
+                StartSession::register);
 //        Registry.register(Registry.ITEM, new Identifier("tutorial", "fabric_item"), FABRIC_ITEM);
         LOGGER.info("Hello Fabric world!");
         ModItems.register();
