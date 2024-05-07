@@ -1,0 +1,14 @@
+{
+  "item.bunkergame.character_card" : "Карта Персонажа",
+  "item.bunkergame.age_bio_card": "Карта возраста",
+  "item.bunkergame.body_type_card": "Карта телосложения",
+  "item.bunkergame.profession_card": "Карта профессии",
+  "item.bunkergame.health_card": "Карта здоровья",
+  "item.bunkergame.phobia_card": "Карта фобии",
+  "item.bunkergame.trait_card": "Карта черты характера",
+  "item.bunkergame.hobby_card": "Карта хобби",
+  "item.bunkergame.additional_information_card": "Карта дополнительной информации",
+  "item.bunkergame.special_conditions_card_1": "Карта особых условий 1",
+  "item.bunkergame.special_conditions_card_2": "Карта особых условий 2",
+  "item.bunkergame.inventory_card" : "Карта багажа"
+}

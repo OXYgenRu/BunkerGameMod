@@ -1,0 +1,14 @@
+{
+  "item.bunkergame.character_card": "Character_card",
+  "item.bunkergame.age_bio_card": "Age_bio_card",
+  "item.bunkergame.body_type_card": "Body_type_card",
+  "item.bunkergame.profession_card": "Profession_card",
+  "item.bunkergame.health_card": "Health_card",
+  "item.bunkergame.phobia_card": "Phobia_card",
+  "item.bunkergame.trait_card": "Trait_card",
+  "item.bunkergame.hobby_card": "Hobby_card",
+  "item.bunkergame.additional_information_card": "Additional_information_card",
+  "item.bunkergame.special_conditions_card_1": "Special_conditions_card_1",
+  "item.bunkergame.special_conditions_card_2": "Special_conditions_card_2",
+  "item.bunkergame.inventory_card": "Inventory_card"
+}
