@@ -64,6 +64,15 @@ public class GameSession {
         }
     }
 
+    public static void endSession(ServerPlayerEntity player) throws Exception {
+        GameSession session = getSession(player);
+        if (session == null) {
+            throw new Exception("Вы не являетесь владельцем сессии");
+        }
+        GameSession.game_sessions_list.remove(session);
+        session = null;
+    }
+
     public static void giveCards(ServerPlayerEntity player) throws Exception {
         assert player != null;
 

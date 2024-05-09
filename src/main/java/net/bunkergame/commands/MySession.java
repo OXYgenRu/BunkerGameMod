@@ -18,7 +18,7 @@ public class MySession {
                                 CommandRegistryAccess commandRegistryAccess,
                                 CommandManager.RegistrationEnvironment registrationEnvironment) {
         serverCommandSourceCommandDispatcher.register(CommandManager.literal("bunkergame").
-                then(CommandManager.literal("mysession").executes(MySession::MySession)));
+                then(CommandManager.literal("mysession").then(CommandManager.literal("info").executes(MySession::MySession))));
     }
 
     private static int MySession(CommandContext<ServerCommandSource> commandContext) {

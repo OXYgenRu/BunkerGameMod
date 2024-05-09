@@ -16,7 +16,8 @@ public class CreateGameSession {
                                 CommandRegistryAccess commandRegistryAccess,
                                 CommandManager.RegistrationEnvironment registrationEnvironment) {
         serverCommandSourceCommandDispatcher.register(CommandManager.literal("bunkergame").
-                then(CommandManager.literal("createsession").executes(CreateGameSession::createGameSession)));
+                then(CommandManager.literal("mysession").then(
+                        CommandManager.literal("createsession").executes(CreateGameSession::createGameSession))));
     }
 
     public static int createGameSession(CommandContext<ServerCommandSource> context)
