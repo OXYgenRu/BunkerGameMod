@@ -4,13 +4,13 @@
   "version": "${version}",
 
   "name": "bunkergame",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "description": "This is an mod for playing bunker game",
   "authors": [
-    "Me!"
+    "Oxygen"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://github.com/OXYgenRu/BunkerGameMod",
+    "sources": "https://github.com/OXYgenRu/BunkerGameMod"
   },
 
   "license": "CC0-1.0",
