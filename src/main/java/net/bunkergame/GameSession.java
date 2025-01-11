@@ -7,6 +7,7 @@ import net.bunkergame.items.ModItems;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.text.Text;
 
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -59,8 +60,12 @@ public class GameSession {
         if (session == null) {
             throw new Exception("Вы не являетесь владельцем сессии");
         }
+        String bunker_description = generateBunkerDescription();
         for (ServerPlayerEntity current_player : session.players) {
             giveCards(current_player);
+            current_player.sendMessage(Text.literal("\n\n\n----------<Катастрофа>----------"));
+            current_player.sendMessage(Text.literal(bunker_description));
+            current_player.sendMessage(Text.literal("--------------------------------"));
         }
     }
 
@@ -71,6 +76,23 @@ public class GameSession {
         }
         GameSession.game_sessions_list.remove(session);
         session = null;
+    }
+
+    public static String generateBunkerDescription() throws Exception {
+        URL url = new URL("https://randomall.ru/api/gens/1422");
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        conn.setRequestMethod("POST");
+
+        if (conn.getResponseCode() != 200) {
+            throw new RuntimeException("Failed : HTTP error code : " + conn.getResponseCode());
+        }
+
+        JsonReader jsonReader = new JsonReader(new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8));
+        JsonObject jsonObject = JsonParser.parseReader(jsonReader).getAsJsonObject();
+
+        conn.disconnect();
+
+        return jsonObject.get("msg").getAsString();
     }
 
     public static void giveCards(ServerPlayerEntity player) throws Exception {
