@@ -32,6 +32,7 @@ public class BunkerGame implements ModInitializer {
                 StartSession::register);
         CommandRegistrationCallback.EVENT.register(
                 EndSession::register);
+//        CommandRegistrationCallback.EVENT.register(SetGameSupport::register);
 //        Registry.register(Registry.ITEM, new Identifier("tutorial", "fabric_item"), FABRIC_ITEM);
         LOGGER.info("Hello Fabric world!");
         ModItems.register();

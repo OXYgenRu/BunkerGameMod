@@ -24,6 +24,7 @@ public class GameSession {
 
     public ServerPlayerEntity owner;
     public List<ServerPlayerEntity> players = new ArrayList<ServerPlayerEntity>();
+    public boolean game_support = false;
 
     public void addPlayer(ServerPlayerEntity player) throws Exception {
         if (players.contains(player)) {
